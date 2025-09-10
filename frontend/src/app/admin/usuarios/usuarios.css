@@ -1,0 +1,42 @@
+:root {
+  --cor-vermelha-senai: #C00000;
+  --cor-senai-vermelho: #E30613;
+  --cor-preta: #1a1a1a;
+  --cor-cinza-escuro: #333333;
+  --cor-cinza-medio: #4d4d4d;
+  --cor-cinza-claro: #f4f4f4;
+  --cor-branca: #ffffff;
+  --cor-status-andamento: #ffc107;
+  --cor-status-concluido: #28a745;
+  --cor-status-aberto: #4d4dff;
+
+  /* adicionais para dark */
+  --bg-claro: #f8fafc;
+  --bg-escuro: #1f1f1f;
+  --bg-card-escuro: #2E3134;
+  --texto-claro: #333;
+  --texto-escuro: #f1f1f1;
+  --borda-escura: #444;
+} 
+
+
+.dark .btn-fechar{
+    color: var(--cor-branca) !important;
+}
+
+.btn-novo-usuario{
+  background-color: var(--cor-senai-vermelho);
+  color: var(--cor-branca);
+}
+
+.dropdown-usuarios{
+  background-color: var(--cor-senai-vermelho);
+}
+.dropdown-usuarios:focus ,.dropdown-usuarios:hover, .dropdown-usuarios:active, .dropdown-usuarios:focus-visible{
+  background-color: var(--cor-senai-vermelho) !important;
+}
+
+.dark .btn-novo-usuario{
+  background-color: var(--cor-branca);
+  color: var(--cor-preta);
+}

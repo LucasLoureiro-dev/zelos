@@ -1,42 +1,434 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cor-vermelha-senai: #0010c0;
+  --cor-senai-vermelho: #E30613;
+  --cor-preta: #1a1a1a;
+  --cor-cinza-escuro: #333333;
+  --cor-cinza-medio: #4d4d4d;
+  --cor-cinza-claro: #f4f4f4;
+  --cor-branca: #ffffff;
+  --cor-status-andamento: #ffc107;
+  --cor-status-concluido: #28a745;
+  --cor-status-aberto: #4d4dff;
+
+  /* adicionais para dark */
+  --bg-claro: #f8fafc;
+  --bg-escuro: #1f1f1f;
+  --bg-card-escuro: #2E3134;
+  --texto-claro: #333;
+  --texto-escuro: #f1f1f1;
+  --borda-escura: #444;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
+/* html, body .fundo-paginas{
+  background-color: var(--cor-cinza-claro);
+}
+.dark html,body .fundo-paginas{
+  background-color: var(--cor-preta);
+} */
+
+.theme-toggle {
+  width: 60px;
+  height: 30px;
+  background-color: #ffffff;
+  border: 1.25px solid #000000b1;
+  border-radius: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle.dark {
+  border: 1.25px solid #ffffffb1;
+  background-color: var(--cor-cinza-escuro);
+
+}
+
+.theme-toggle .icon {
+  color: rgb(47, 47, 47);
+  font-size: 14px;
+  z-index: 2;
+  top: -5px;
+  left: 0px;
+}
+
+.theme-toggle.dark .sun {
+  color: rgb(255, 255, 255);
+}
+
+.dark span.icon.moon {
+  color: #ffffff;
+}
+
+/* .theme-toggle .sun {
+  color: rgb(255, 255, 255);
+} */
+
+.theme-toggle .ball {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: rgb(47, 47, 47);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle.dark .ball {
+  transform: translateX(30px);
+  background-color: #ffffff;
+}
+
+/* Tema claro */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Tema escuro */
+.dark body {
+  background-color: #191A1E;
+  color: #f1f1f1;
 }
 
-a {
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .form-control {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Sidebar - modo claro (padrão) */
+.nav-usuario {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Links e ícones no claro */
+.nav-usuario .menu-link {
+  color: #1e1e1e !important;
+}
+
+.nav-usuario .menu-link i {
+  color: #1e1e1e !important;
+}
+
+/* Badge no claro */
+.nav-usuario .badge-count {
+  background-color: red;
+  color: white;
+}
+
+/* //////////////////////////////////////////////////// */
+/* Sidebar - modo escuro */
+.dark .nav-usuario {
+  background-color: #121215;
+  color: #ffffff !important;
+}
+
+.dark .login-box {
+  background: var(--cor-preta);
+  color: #ffffff;
+}
+
+.dark p {
+  color: var(--cor-branca) ;
+}
+
+.dark .menu-card {
+  background-color: #2E3134;
+}
+
+/* Links e ícones no escuro */
+.dark .nav-usuario .menu-link {
+  color: #ffffff !important;
+}
+
+.dark .nav-usuario i .menu-link:hover {
+  color: #ffffff !important;
+}
+
+.dark .nav-usuario .menu-link:hover {
+  color: #ffffff !important;
+  background-color: #E30613;
+}
+
+.dark .nav-usuario .menu-link i {
+  color: #ffffff !important;
+}
+
+/* Badge no escuro */
+.dark .nav-usuario .badge-count {
+  background-color: #ff4d4d;
+  /* vermelho mais suave */
+  color: #ffffff !important;
+}
+
+/* Footer perfil no escuro */
+.dark .nav-usuario .sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .nav-usuario .muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark h4 {
+  color: #ffffff;
+}
+
+button.btn.btn-danger {
+  background-color: var(--cor-vermelha-senai);
+}
+
+.cabecalho-chat.bg-danger {
+  background-color: var(--cor-vermelha-senai) !important;
+}
+
+
+.bg-vermelho {
+  background-color: var(--cor-senai-vermelho);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NOT FOUND Page */
+
+.oops-title {
+  font-size: 96px;
+  font-weight: 900;
+  color: #000;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.voltar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  text-decoration: none !important;
+
+}
+
+button .home-button {
+  text-decoration: none !important;
+
+}
+
+.home-button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none !important;
+}
+
+.home-button:hover {
+  background-color: #b91c1c;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.voltar a {
+  text-decoration: none !important;
   color: inherit;
-  text-decoration: none;
+  /* mantém a cor do botão */
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Responsividade */
+@media (max-width: 768px) {
+  .oops-title {
+    font-size: 72px;
   }
+
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 60px;
+  }
+
+  .gear-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .gear-inner {
+    width: 68px;
+    height: 68px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .oops-title {
+    font-size: 56px;
+  }
+
+}
+
+/* END NOT FOUND Page  */
+
+
+
+
+
+
+
+
+
+
+.container {
+  height: 100vh;
+}
+
+.bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--base-color);
+  --base-color: #ffffff;
+  /*use your base color*/
+}
+
+
+.loader {
+  width: 120px;
+  height: 80px;
+  position: relative;
+  display: inline-block;
+  background-color: var(--base-color);
+}
+
+.loader::before {
+  content: '';
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  background-image: radial-gradient(circle 16px at 36px 36px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 36px 0px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 0px 36px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 72px 36px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 36px 72px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 60px 10px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 60px 60px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 10px 60px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 8px at 10px 10px, var(--base-color) 100%, transparent 0);
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: rotationBack 3s linear infinite;
+}
+
+.loader::after {
+  content: '';
+  left: 70px;
+  top: 30px;
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #000000;
+  background-image: radial-gradient(circle 10px at 24px 24px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 24px 0px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 0px 24px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 48px 24px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 24px 48px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 40px 6px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 40px 40px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 6px 40px, var(--base-color) 100%, transparent 0),
+    radial-gradient(circle 5px at 6px 6px, var(--base-color) 100%, transparent 0);
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: rotationBack 4s linear infinite reverse;
+}
+
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+
+/* td em todas as págs no modo DARK */
+.dark td {
+  color: #ffffff;
+}
+/* td em todas as págs no modo CLARO */
+ td {
+  color: #000000;
 }

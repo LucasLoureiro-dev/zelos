@@ -1,0 +1,241 @@
+:root {
+  --cor-vermelha-senai: #C00000;
+  --cor-senai-vermelho: #E30613;
+  --cor-preta: #1a1a1a;
+  --cor-cinza-escuro: #333333;
+  --cor-cinza-medio: #4d4d4d;
+  --cor-cinza-claro: #f4f4f4;
+  --cor-branca: #ffffff;
+  --cor-status-andamento: #ffc107;
+  --cor-status-concluido: #28a745;
+  --cor-status-aberto: #4d4dff;
+
+  /* adicionais para dark */
+  --bg-claro: #f8fafc;
+  --bg-escuro: #1f1f1f;
+  --bg-card-escuro: #2E3134;
+  --texto-claro: #333;
+  --texto-escuro: #f1f1f1;
+  --borda-escura: #444;
+}
+
+p,
+h4,
+th,
+td,
+h3 {
+  font-family: var(--font-geist-sans);
+}
+
+.notificacoes {
+  background-color: var(--bg-claro);
+  min-height: 100vh;
+}
+
+.dark .notificacoes {
+  background-color: var(--bg-escuro);
+}
+
+.main {
+  flex: 1;
+}
+
+.tabela-container {
+  border-radius: 9.5px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.dark .tabela-container {
+  background-color: var(--bg-card-escuro);
+}
+
+.tabela-adm {
+  background-color: #fff;
+  border-radius: 9.5px;
+  overflow-x: auto;
+  text-align: left;
+}
+
+.dark .tabela-adm {
+  background-color: var(--bg-card-escuro);
+}
+
+.tabela-adm table {
+  width: 100%;
+}
+
+.tabela-tecnico th,
+.tabela-tecnico {
+  background-color: var(--bg-claro);
+  text-align: left;
+  border-bottom: 1px solid var(--cor-cinza-claro);
+  background: #fff;
+  /* font-weight: 600; */
+  color: var(--cor-preta);
+}
+
+.tabela-tecnico-visto {
+  background-color: var(--bg-claro);
+  text-align: left;
+  border-bottom: 1px solid var(--cor-cinza-claro);
+  background: #fff;
+  font-weight: 600;
+  color: var(--cor-preta);
+}
+
+.dark .tabela-adm td,
+th {
+  background-color: var(--bg-card-escuro);
+  color: var(--cor-branca);
+}
+
+
+.tabela-adm th {
+  font-weight: 600;
+  background: var(--bg-escuro);
+  color: var(--cor-branca);
+}
+
+.tabela-adm tbody tr {
+  border-bottom: 1px solid var(--cor-cinza-claro);
+}
+
+.dark .tabela-adm tbody tr td {
+  color: var(--cor-branca);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 25, 25, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  animation: fadeBg 0.3s ease;
+}
+
+.fade-in {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.btn-adicionar-filtro {
+  border: 2px var(--cor-preta) solid;
+}
+
+.btn-fechar {
+  color: var(--cor-preta);
+}
+
+.dark .btn-fechar {
+  color: var(--cor-branca);
+}
+
+.container-modal {
+  width: 50%;
+}
+
+.dark .modal-forms-chamada {
+  border-color: #6c757d;
+  background-color: var(--cor-cinza-escuro);
+  color: #ffffff;
+}
+
+.dark .icone-filtro {
+  color: var(--cor-branca);
+}
+
+.dark .btn-adicionar-filtro {
+  border-color: var(--cor-branca);
+}
+
+.btn-fechar {
+  color: var(--cor-preta);
+  background-color: #fff;
+  border: none;
+}
+
+.dark .btn-fechar {
+  color: var(--cor-branca);
+  background-color: var(--bg-card-escuro);
+}
+
+.btn-vermais {
+  background-color: var(--cor-senai-vermelho);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  /* evita quebra do texto */
+}
+
+.btn-vermais:active {
+  color: var(--cor-branca);
+  background-color: var(--cor-senai-vermelho);
+}
+
+.btn-vermais:hover {
+  color: var(--cor-branca);
+  background-color: var(--cor-vermelha-senai);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-vermais:focus-visible {
+  color: var(--cor-branca);
+  background-color: var(--cor-vermelha-senai);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark .tudo-modal {
+  background-color: var(--bg-card-escuro);
+  color: #ffffff;
+}
+
+.tabela-adm th {
+  background-color: var(--bg-claro);
+  color: var(--bg-card-escuro);
+}
+
+.dark .tabela-adm th{
+  background-color: var(--bg-escuro);
+  color: var(--cor-branca);
+}
+
+@media (max-width: 800px) {
+
+  thead {
+    display: none !important;
+  }
+
+  td {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 3ch auto;
+  }
+
+  td::before {
+    content: attr(data-th) ": ";
+    font-weight: 600;
+  }
+
+
+}

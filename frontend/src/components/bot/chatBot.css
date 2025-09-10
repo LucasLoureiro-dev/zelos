@@ -1,0 +1,61 @@
+:root {
+    --cor-vermelha-senai: #C00000;
+    --cor-senai-vermelho: #E30613;
+    --cor-preta: #1a1a1a;
+    --cor-cinza-escuro: #333333;
+    --cor-cinza-medio: #4d4d4d;
+    --cor-cinza-claro: #f4f4f4;
+    --cor-branca: #ffffff;
+    --cor-status-andamento: #ffc107;
+    --cor-status-concluido: #28a745;
+    --cor-status-aberto: #6c757d;
+  
+    /* adicionais para dark */
+    --bg-claro: #f8fafc;
+    --bg-escuro: #1f1f1f;
+    --bg-card-escuro: #2E3134;
+    --texto-claro: #333;
+    --texto-escuro: #f1f1f1;
+    --borda-escura: #444;
+  }
+
+.cabecalho-chat{
+    background-color: var(--cor-senai-vermelho);
+}
+
+.chat-bot-body{
+    background-color: var(--bg-claro);
+    width: 40%;
+    height: 30rem;
+}
+
+.dark .chat-bot-body{
+    background-color: var(--bg-card-escuro);
+}
+
+.btn-enviar-chat{
+    background-color: var(--cor-senai-vermelho);
+    color: var(--cor-branca);
+}
+
+.btn-enviar-chat:hover{
+    background-color: var(--cor-vermelha-senai);
+    color: var(--cor-branca);
+}
+
+.input-enviar-chat input:focus{
+    box-shadow: none;
+    border: none;
+}
+.input-enviar-chat input:focus-visible{
+    box-shadow: none;
+    border: none;
+}
+
+@media (max-width: 800px) {
+
+    .chat-bot-body{
+        width: 70%;
+    }
+  
+  }

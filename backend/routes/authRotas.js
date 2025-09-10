@@ -1,9 +1,15 @@
 import express from 'express';
 import passport from '../config/ldap.js';
+import { buscarAdmController, buscarTecnicoController } from '../controllers/dashboardController.js';
 
 const router = express.Router();
 
 // Rota de Login
+
+router.post('/loginAdm', buscarAdmController);
+
+router.post('/loginTecnico', buscarTecnicoController);
+
 router.post('/login', (req, res, next) => {
   // Middleware de autenticação com tratamento de erros
   passport.authenticate('ldapauth', { session: true }, (err, user, info) => {
@@ -12,7 +18,7 @@ router.post('/login', (req, res, next) => {
         console.error('Erro na autenticação:', err);
         return res.status(500).json({ error: 'Erro interno no servidor' });
       }
-      
+
       if (!user) {
         console.warn('Falha na autenticação:', info?.message || 'Credenciais inválidas');
         return res.status(401).json({ error: info?.message || 'Autenticação falhou' });
@@ -24,10 +30,12 @@ router.post('/login', (req, res, next) => {
           console.error('Erro ao criar sessão:', loginErr);
           return res.status(500).json({ error: 'Erro ao criar sessão' });
         }
-
-        console.log('Usuário autenticado:', user.username);
-        return res.json({ 
-          message: 'Autenticado com sucesso', 
+        req.session.userId = user.sAMAccountName
+        req.session.userName = user.displayName
+        req.session.description = user.description
+        req.session.isLogged = true
+        return res.json({
+          message: 'Autenticado com sucesso',
           user: {
             username: user.username,
             displayName: user.displayName,
@@ -49,20 +57,20 @@ router.post('/logout', (req, res) => {
   }
 
   console.log('Usuário deslogando:', req.user?.username);
-  
+
   req.logout((err) => {
     if (err) {
       console.error('Erro no logout:', err);
       return res.status(500).json({ error: 'Erro ao realizar logout' });
     }
-    
+
     // Destrói a sessão completamente
     req.session.destroy((destroyErr) => {
       if (destroyErr) {
         console.error('Erro ao destruir sessão:', destroyErr);
         return res.status(500).json({ error: 'Erro ao encerrar sessão' });
       }
-      
+
       res.clearCookie('connect.sid'); // Remove o cookie de sessão
       res.json({ message: 'Logout realizado com sucesso' });
     });
@@ -72,7 +80,7 @@ router.post('/logout', (req, res) => {
 // Rota para verificar autenticação
 router.get('/check-auth', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.json({ 
+    return res.json({
       authenticated: true,
       user: {
         username: req.user.username,

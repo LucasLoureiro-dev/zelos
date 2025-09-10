@@ -1,0 +1,134 @@
+:root {
+  --cor-vermelha-senai: #C00000;
+  --cor-senai-vermelho: #E30613;
+  --cor-preta: #1a1a1a;
+  --cor-cinza-escuro: #333333;
+  --cor-cinza-medio: #4d4d4d;
+  --cor-cinza-claro: #f4f4f4;
+  --cor-branca: #ffffff;
+  --cor-status-andamento: #ffc107;
+  --cor-status-concluido: #28a745;
+  --cor-status-aberto: #6c757d;
+}
+
+.header-table{
+  border-top: 0.2rem #aaaa solid;
+  border-bottom: 0.2rem #aaaa solid;
+}
+
+.transicao-container {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  max-height: 0;
+  opacity: 0;
+}
+.transicao-container.mostrar {
+  max-height: 200px;
+  opacity: 1;
+}
+input,
+select,
+textarea {
+  border: 1px solid #424242 !important;
+  border-radius: 6px;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border: 1px solid #C00000 !important;
+  box-shadow: 0px 0px 3px 1px rgba(255, 0, 0, 0.3) !important;
+  outline: none !important;
+}
+
+.fade-in {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.btn-adicionar-filtro{
+  border: 2px var(--cor-preta) solid;
+}
+
+.botao-vermelhao {
+  background-color: var(--cor-senai-vermelho) !important;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.botao-vermelhao:hover{
+  background-color: #8b0000 !important;
+  color: #ffffff !important;
+}
+
+.botao-vermelhao a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.botao-vermelhao i {
+  margin-right: 8px;
+}
+
+.botao-vermelhao:active {
+  background-color: var(--cor-senai-vermelho);
+}
+.botao-vermelhao:focus {
+  background-color: #8b0000;
+}
+
+.modal-forms-chamada{
+  position: absolute;
+  z-index: 15;
+  top: 10;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/* modo escuro */
+.dark .btn-nova-chamada{
+  background-color: var(--cor-branca);
+  color: var(--cor-preta);
+}
+.dark .modal-forms-chamada {
+  border-color: #6c757d;
+  background-color: var(--cor-cinza-escuro);
+  color: #ffffff;
+}
+.dark .p-adicionar-filtro{
+  color: var(--cor-branca);
+}
+.dark .icone-filtro{
+  color: var(--cor-branca);
+}
+.dark .btn-adicionar-filtro{
+  border-color: var(--cor-branca);
+}
+@media (max-width: 800px) {
+
+  thead{
+    display: none !important;
+  }
+
+  td{
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 3ch auto;
+  }
+  td::before{
+    content: attr(data-th) ": ";
+    font-weight: 600;
+  }
+
+
+}

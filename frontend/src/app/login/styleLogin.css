@@ -1,0 +1,248 @@
+:root {
+    --cor-vermelha-senai: #C00000;
+    --cor-senai-vermelho: #E30613;
+    --cor-preta: #1a1a1a;
+    --cor-cinza-escuro: #333333;
+    --cor-cinza-medio: #4d4d4d;
+    --cor-cinza-claro: #f4f4f4;
+    --cor-branca: #ffffff;
+    --cor-status-andamento: #ffc107;
+    --cor-status-concluido: #28a745;
+    --cor-status-aberto: #6c757d;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -10;
+}
+
+body {
+    background-image: url("/img/background_red.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Evita scroll inesperado */
+}
+
+
+
+
+/* Se você quiser aplicar uma camada semi-transparente sobre as partículas */
+#particles-js::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* ajuste conforme desejado */
+    top: 0;
+    left: 0;
+    z-index: -9;
+}
+
+.content {
+    position: relative;
+    z-index: 0;
+    /* garante que o conteúdo fique acima */
+}
+
+
+.texto-login {
+    color: #1a1a1a;
+}
+
+.login-page-wrapper {
+    min-height: 100vh;
+}
+
+.login-box {
+    z-index:999;
+    background: var(--cor-branca);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+.dark.login-box {
+    background: var(--cor-cinza-medio);  
+}
+
+
+.login-box .logo-login {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--cor-vermelha-senai);
+    margin-bottom: 25px;
+}
+
+
+.abas-perfil {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+}
+
+.abas-perfil .aba {
+    position: relative;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--cor-cinza-medio);
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.dark .abas-perfil .aba {
+    color: var(--cor-cinza-claro);
+}
+
+/* animação qnd passa o mouse */
+.abas-perfil .aba::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background-color: var(--cor-senai-vermelho);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+
+.abas-perfil .aba:hover::after {
+    width: 100%;
+}
+
+/* barra */
+.abas-perfil .aba.ativa {
+    color: var(--cor-senai-vermelho);
+    font-weight: bold;
+}
+
+/*aba ativa */
+.abas-perfil .aba.ativa::after {
+    width: 100%;
+}
+
+.form-login .campo {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.dark p.texto-login {
+    color: #ffffff;
+}
+
+.form-login .botao-entrar {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--cor-senai-vermelho);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-login .botao-entrar:hover {
+    background-color: var(--cor-vermelha-senai);
+}
+
+.campo {
+    background-color: #e6e6e6;
+    color: #000;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.campo:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ccc;
+}
+
+/* .dark .campo{
+    color: #28a745 !important;
+}
+
+input[name="RM"] {
+    background-color: #e6e6e6; 
+}
+
+input[name="senha"] {
+    background-color: #e6e6e6;
+}
+
+.dark input[name="RM"] {
+    background-color: var(--cor-cinza-escuro); 
+    border: var(--cor-cinza-claro);
+    color: #e6e6e6;
+
+}
+
+.dark input[name="senha"] {
+    background-color: var(--cor-cinza-escuro); 
+    border: var(--cor-cinza-claro);
+    color: #e6e6e6;
+}
+
+.campo::placeholder {
+    color: #ffffff !important; 
+} */
+
+
+/* modo dark */
+.dark .campo {
+    background-color: #333;   /* fundo escuro */
+    color: #fff !important;   /* texto branco */
+    border: 1px solid #555;
+}
+
+/* placeholder no modo normal */
+.campo::placeholder {
+    color: #666;
+}
+
+/* placeholder no modo dark */
+.dark .campo::placeholder {
+    color: #bbb !important; /* cinza claro */
+}
+
+/* inputs number/password garantidos no dark */
+.dark input[type="number"],
+.dark input[type="password"],
+.dark input[type="text"] {
+    color: #fff !important; /* força texto branco */
+}
+
+
+@media (max-width: 470px) and (min-width: 290px) {
+    .login-page-wrapper {
+        padding: 20px;
+    }
+
+    .login-box {
+        max-width: 500px;
+    }
+}
+

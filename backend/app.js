@@ -4,6 +4,13 @@ import session from 'express-session';
 import dotenv from 'dotenv';
 import authRotas from './routes/authRotas.js';
 import passport from './config/ldap.js';
+import poolRotas from './routes/poolRotas.js';
+import servicosRotas from './routes/servicoRotas.js';
+import dashboardRotas from './routes/dashboardRotas.js';
+import notificacaoRotas from './routes/notificacaoRotas.js';
+import equipamentoRotas from './routes/equipamentosRotas.js'
+import chamadasRotas from './routes/chamadaRotas.js';
+import acompanhamentoRotas from './routes/acompanhamentoRotas.js';
 
 // 1. Carrega variáveis de ambiente PRIMEIRO
 dotenv.config();
@@ -19,7 +26,7 @@ try {
     credentials: true
   }));
   app.use(express.json());
-  
+
   app.use(session({
     secret: 'sJYMmuCB2Z187XneUuaOVYTVUlxEOb2K94tFZy370HjOY7T7aiCKvwhNQpQBYL9e',
     resave: false,
@@ -41,6 +48,13 @@ try {
 
 // 5. Rotas
 app.use('/auth', authRotas);
+app.use('/pool', poolRotas);
+app.use('/servicos', servicosRotas);
+app.use('/dashboard', dashboardRotas);
+app.use('/notificacoes', notificacaoRotas);
+app.use('/equipamentos', equipamentoRotas);
+app.use('/chamadas', chamadasRotas);
+app.use('/acompanhamentos', acompanhamentoRotas);
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'online' });
@@ -69,3 +83,17 @@ process.on('SIGTERM', () => {
     console.log('Servidor encerrado');
   });
 });
+
+app.get("/", (req, res) => {
+  if (req.session.userId) {
+    res.status(200).json({
+      "userID": req.session.userId,
+      "userName": req.session.userName,
+      "Description": req.session.description
+    })
+    
+  }
+  else{
+    res.status(200).json({ message: "faça login para mais informações" })
+  }
+})

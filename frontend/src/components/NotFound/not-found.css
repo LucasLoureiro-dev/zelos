@@ -1,0 +1,130 @@
+:root {
+  --cor-vermelha-senai: #C00000;
+  --cor-senai-vermelho: #E30613;
+  --cor-preta: #1a1a1a;
+  --cor-cinza-escuro: #333333;
+  --cor-cinza-medio: #4d4d4d;
+  --cor-cinza-claro: #f4f4f4;
+  --cor-branca: #ffffff;
+  --cor-status-andamento: #ffc107;
+  --cor-status-concluido: #28a745;
+  --cor-status-aberto: #4d4dff;
+
+  /* adicionais para dark */
+  --bg-claro: #f8fafc;
+  --bg-escuro: #1f1f1f;
+  --bg-card-escuro: #2E3134;
+  --texto-claro: #333;
+  --texto-escuro: #f1f1f1;
+  --borda-escura: #444;
+}
+
+.oops-title {
+  font-size: 96px;
+  font-weight: 900;
+  color: #000;
+  text-align: center;
+}
+
+.dark .oops-title{
+  color: var(--cor-branca);
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20px
+}
+
+.img {
+  display: block;
+  margin: 0 auto 80px auto;
+  width: 450px;
+  height: auto;
+  margin-top: 0px;
+}
+
+.voltar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1%;
+  text-decoration: none !important;
+
+}
+
+button .home-button {
+  text-decoration: none !important;
+
+}
+
+.home-button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none !important;
+}
+
+.home-button:hover {
+  background-color: #b91c1c;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.voltar a {
+  text-decoration: none !important;
+  color: inherit;
+  /* mantém a cor do botão */
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .oops-title {
+    font-size: 72px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 60px;
+  }
+
+    .img {
+        width: 300px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-404{
+        padding: 15%;
+    }
+  .oops-title {
+    font-size: 56px;
+  }
+    .subtitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+    .img {
+        width: 250px;
+        margin-bottom: 30px;
+    }
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de Upload de Livro</title>
+    <title>Teste de Upload de Usuário</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,22 +45,19 @@
 </head>
 <body>
 
-    <h1>Adicionar Novo Livro</h1>
+    <h1>Adicionar Novo Usuário</h1>
 
-    <form id="livroForm">
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required>
+    <form id="userForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
 
         <label for="descricao">Descrição:</label>
         <input type="text" id="descricao" name="descricao" required>
 
-        <label for="isbn">ISBN:</label>
-        <input type="text" id="isbn" name="isbn" required>
+        <label for="foto">Capa do Usuário:</label>
+        <input type="file" id="foto" name="foto" accept="image/*" required>
 
-        <label for="capa">Capa do Livro:</label>
-        <input type="file" id="capa" name="capa" accept="image/*" required>
-
-        <button type="submit">Adicionar Livro</button>
+        <button type="submit">Adicionar Usuário</button>
     </form>
 
     <div id="response">
@@ -69,14 +66,14 @@
     </div>
 
     <script>
-        document.getElementById('livroForm').addEventListener('submit', async function(event) {
+        document.getElementById('userForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            const form = document.getElementById('livroForm');
+            const form = document.getElementById('userForm');
             const formData = new FormData(form);
 
             try {
-                const response = await fetch('http://localhost:3000/livros', {
+                const response = await fetch('http://localhost:3000/Usuario', {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Bearer SENHA_SECRETA' // Substitua pelo seu token JWT

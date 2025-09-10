@@ -1,0 +1,379 @@
+:root {
+    --cor-vermelha-senai: #C00000;
+    --cor-senai-vermelho: #E30613;
+    --cor-preta: #1a1a1a;
+    --cor-cinza-escuro: #333333;
+    --cor-cinza-medio: #4d4d4d;
+    --cor-cinza-claro: #f4f4f4;
+    --cor-branca: #ffffff;
+    --cor-status-andamento: #ffc107;
+    --cor-status-concluido: #28a745;
+    --cor-status-aberto: #4d4dff;
+
+    /* adicionais para dark */
+    --bg-claro: #f8fafc;
+    --bg-escuro: #1f1f1f;
+    --bg-card-escuro: #2E3134;
+    --texto-claro: #333;
+    --texto-escuro: #f1f1f1;
+    --borda-escura: #444;
+}
+
+body {
+    height: 100%;
+}
+
+/*  MODO CLARO / */
+.dashboard-tecnico {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-claro);
+    color: var(--texto-claro);
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.dashboard-tecnico .container-fluid {
+    min-height: 100vh;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.dashboard-tecnico .main-content {
+    min-height: 100vh;
+}
+
+/* cards */
+.dashboard-tecnico .overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.dashboard-tecnico .overview-card {
+    background: #fff;
+    border-radius: 9.5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-tecnico .overview-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.dashboard-tecnico .overview-card span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--cor-senai-vermelho);
+}
+
+.dashboard-tecnico .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.dashboard-tecnico .card-dashboard {
+    background: #fff;
+    border-radius: 9.5px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.overview-card {
+    transition: transform 0.2s;
+}
+
+.overview-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-transition {
+    transition: transform 0.2s;
+}
+
+.card-transition:hover {
+    transform: translateY(-3px);
+}
+
+.dashboard-tecnico .card-dashboard h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.dashboard-tecnico .card-dashboard p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* tabela */
+.dashboard-tecnico .table-card {
+    background: #fff;
+    border-radius: 9.5px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+}
+
+.dashboard-tecnico .table-card h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.dashboard-tecnico .table-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard-tecnico .table-card th,
+.dashboard-tecnico .table-card td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dashboard-tecnico .table-card th {
+    background: #f1f5f9;
+    font-weight: 600;
+}
+
+.dashboard-usuario .table-card td[data-th="Descrição"] {
+    max-width: 250px;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
+    padding-right: 20px;
+  }
+  
+  
+  .dashboard-usuario .table-card td[data-th="Status"] {
+    min-width: 170px;
+  } 
+  
+  .dashboard-usuario .status {
+    padding: 4px 10px;
+    border-radius: 9.5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+.dashboard-tecnico .status {
+    padding: 4px 12px;
+    border-radius: 9.5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dashboard-tecnico .status-pendente {
+    background: #4d4dff;
+    color: #fff;
+    border-radius: 7.5px;
+}
+
+.dashboard-tecnico .status-concluido {
+    background: #28a745;
+    color: #fff;
+    border-radius: 7.5px;
+}
+
+.dashboard-tecnico .status-andamento {
+    background: #ffc107;
+    color: #fff;
+    border-radius: 7.5px;
+}
+
+/*  MODO ESCURO  */
+.dark .dashboard-tecnico {
+    background-color: var(--bg-escuro);
+    color: var(--texto-escuro);
+}
+
+.dark .dashboard-tecnico .overview-card,
+.dark .dashboard-tecnico .card-dashboard,
+.dark .dashboard-tecnico .table-card,
+.modal-content {
+    background: var(--bg-card-escuro);
+    color: var(--texto-escuro);
+    border: 1px solid var(--borda-escura);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.btn-fechar {
+    color: var(--cor-preta);
+    background-color: var(--cor-branca);
+}
+
+.dark .btn-fechar {
+    color: var(--cor-branca);
+    background-color: var(--bg-card-escuro);
+}
+
+.dark .dashboard-tecnico .overview-card h3,
+.dark .dashboard-tecnico .card-dashboard h2,
+.dark .dashboard-tecnico .card-dashboard p,
+.dark .dashboard-tecnico .table-card h3,
+.dark .dashboard-tecnico .table-card th,
+.dark .dashboard-tecnico .table-card td {
+    color: var(--texto-escuro);
+}
+
+.dark .dashboard-tecnico .table-card th {
+    background-color: var(--bg-escuro);
+}
+
+.dark .dashboard-tecnico .table-card td {
+    border-bottom: 1px solid var(--borda-escura);
+}
+
+/* status no escuro */
+.dark .dashboard-tecnico .status-pendente {
+    background: #4d4dff;
+    color: #fff;
+}
+
+.dark .dashboard-tecnico .status-concluido {
+    background: #28a745;
+    color: #fff;
+}
+
+.dark .dashboard-tecnico .status-andamento {
+    background: #ffc107;
+    color: #fff;
+}
+
+.dashboard-usuario {
+    display: flex;
+    flex-direction: row;
+}
+
+/* responsividade */
+@media (max-width: 576px) {
+    .dashboard-tecnico .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-tecnico .card-dashboard {
+        padding: 15px;
+    }
+
+    .dashboard-tecnico .overview-card span {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .dashboard-tecnico {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 800px) {
+    .notificacoes {
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+    }
+
+    thead {
+        display: none !important;
+    }
+
+    td {
+        display: grid;
+        gap: 5rem;
+        grid-template-columns: 3ch auto;
+    }
+
+    td::before {
+        content: attr(data-th) ": ";
+        font-weight: 600;
+    }
+}
+
+/* Modo claro */
+.dashboard-tecnico .btn-atribuir {
+    background-color: var(--cor-vermelha-senai);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dashboard-tecnico .btn-atribuir:hover {
+    background-color: #a30000;
+    color: #fff;
+}
+
+/* Botão no modo escuro */
+.dark .dashboard-tecnico .btn-atribuir {
+    background-color: var(--cor-senai-vermelho);
+    color: #fff;
+}
+
+.dark .dashboard-tecnico .btn-atribuir:hover {
+    background-color: #800000;
+    color: #fff;
+}
+
+/* Modal no modo claro */
+.modal-content {
+    background: #fff;
+    color: var(--texto-claro);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Modal no modo escuro */
+.dark .modal-content {
+    background: var(--bg-card-escuro);
+    color: var(--texto-escuro);
+    border: 1px solid var(--borda-escura);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+}
+
+/* ===== Desativar completamente o hover/animacao da TABELA ===== */
+.dashboard-tecnico .card-transition,
+.dashboard-tecnico .card-transition:hover,
+.dashboard-tecnico .card-transition:focus,
+.dashboard-tecnico .card-transition:active {
+  transform: none !important;
+  transition: none !important;
+}
+
+.dashboard-tecnico .table-card,
+.dashboard-tecnico .table-card:hover,
+.dashboard-tecnico .table-card:focus,
+.dashboard-tecnico .table-card:active {
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (max-width: 990px) {
+
+    .dashboard-usuario .table-card td[data-th="Descrição"] {
+      max-width: 300px;
+      white-space: normal;
+      word-break: keep-all;
+      line-height: 1.4;
+      padding-right: 10px;
+    }
+  
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edição de Livro</title>
+    <title>Edição de Usuário</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,25 +45,22 @@
 </head>
 <body>
 
-    <h1>Editar Livro</h1>
+    <h1>Editar Usuário</h1>
 
-    <form id="livroForm">
-        <label for="id">ID do Livro:</label>
-        <input type="text" id="id" name="id" required placeholder="Digite o ID do livro que você deseja editar" readonly>
+    <form id="userForm">
+        <label for="id">ID do Usuário:</label>
+        <input type="text" id="id" name="id" required placeholder="Digite o ID do Usuário que você deseja editar" readonly>
 
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome">
 
         <label for="descricao">Descrição:</label>
         <input type="text" id="descricao" name="descricao">
 
-        <label for="isbn">ISBN:</label>
-        <input type="text" id="isbn" name="isbn">
+        <label for="foto">Foto:</label>
+        <input type="file" id="foto" name="foto" accept="image/*">
 
-        <label for="capa">Nova Capa do Livro:</label>
-        <input type="file" id="capa" name="capa" accept="image/*">
-
-        <button type="submit">Atualizar Livro</button>
+        <button type="submit">Atualizar Usuário</button>
     </form>
 
     <div id="response">
@@ -81,33 +78,42 @@
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
 
-        const livroId = getParameterByName('id');
+        const userId = getParameterByName('id');
 
-        if (!livroId) {
-            document.body.innerHTML = '<p style="color: red;">ID do livro não especificado na URL. Use: testeUpdate.html?id=SEU_ID</p>';
+        if (!userId) {
+            document.body.innerHTML = '<p style="color: red;">ID do Usuário não especificado na URL. Use: testeUpdate.html?id=SEU_ID</p>';
         } else {
-            document.getElementById('id').value = livroId;
+            document.getElementById('id').value = userId;
 
-            fetch(`http://localhost:3000/livros/${livroId}`)
+            fetch(`http://localhost:3000/Usuario/${userId}`)
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('titulo').value = data.titulo || '';
+                    document.getElementById('Nome').value = data.titulo || '';
                     document.getElementById('descricao').value = data.descricao || '';
-                    document.getElementById('isbn').value = data.isbn || '';
+                    if (data.foto) {
+                        const img = document.createElement('img');
+                        img.src = data.foto;
+                        img.alt = 'Foto do Usuário';
+                        img.style.maxWidth = '200px';
+                        img.style.maxHeight = '200px';
+                        document.getElementById('responseContent').appendChild(img);
+                    } else {
+                        document.getElementById('responseContent').textContent = 'Nenhuma foto disponível.';
+                    }
                 })
                 .catch(error => {
-                    console.error('Erro ao carregar as informações do livro:', error);
-                    document.getElementById('responseContent').textContent = 'Erro ao carregar as informações do livro.';
+                    console.error('Erro ao carregar as informações do Usuário:', error);
+                    document.getElementById('responseContent').textContent = 'Erro ao carregar as informações Usuário.';
                 });
 
-            document.getElementById('livroForm').addEventListener('submit', async function(event) {
+            document.getElementById('userForm').addEventListener('submit', async function(event) {
                 event.preventDefault();
 
-                const form = document.getElementById('livroForm');
+                const form = document.getElementById('userForm');
                 const formData = new FormData(form);
 
                 try {
-                    const response = await fetch(`http://localhost:3000/livros/${livroId}`, {
+                    const response = await fetch(`http://localhost:3000/Usuario/${userId}`, {
                         method: 'PUT',
                         headers: {
                             'Authorization': `Bearer SENHA_SECRETA` // Substitua pelo seu token JWT
