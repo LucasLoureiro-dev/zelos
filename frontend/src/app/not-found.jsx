@@ -5,17 +5,15 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <>
-      <div className="page-404 mt-3">
+      <div className="page-404 d-flex flex-column row-gap-3 justify-content-center align-items-center">
         
         <h1 className="oops-title">Oops!</h1>
-
-        {/* Subtítulo */}
-        <p className="subtitle">Página não foi encontrada... :/</p>
+        <p className="subtitle m-0">Página não foi encontrada... :/</p>
     
-        <img src="./img/404.png" className='img'/>
+        <img src="/img/404.png" className='img-modo-claro'/>
+        <img src="/img/404-White.png" className='img-modo-escuro'/>
 
-        {/* Botão Voltar para home */}
-        <div className='voltar text-decoration-none'>
+        <div className='voltar text-decoration-none mb-4'>
           <Link href={"/"} >
             <button
               className="home-button text-decoration-none"

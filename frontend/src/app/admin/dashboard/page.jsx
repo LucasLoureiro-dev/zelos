@@ -100,13 +100,13 @@ export default function DashboardAdmin() {
         });
 
         const ultimas5_pendente = chamadosPendentes
-            .sort((a, b) => new Date(b.criadoEm).getTime() - new Date(a.criadoEm).getTime())
+            .sort((a, b) => new Date(b.criado_em).getTime() - new Date(a.criado_em).getTime())
             .slice(0, 5);
         const ultimas5_em_andamento = chamadosEmAndamento
-            .sort((a, b) => new Date(b.criadoEm).getTime() - new Date(a.criadoEm).getTime())
+            .sort((a, b) => new Date(b.atualizado_em).getTime() - new Date(a.atualizado_em).getTime())
             .slice(0, 5);
         const ultimas5_concluido = chamadosConcluidos
-            .sort((a, b) => new Date(b.criadoEm).getTime() - new Date(a.criadoEm).getTime())
+            .sort((a, b) => new Date(b.atualizado_em).getTime() - new Date(a.atualizado_em).getTime())
             .slice(0, 5);
 
         const chamados_pendente = ultimas5_pendente.map((aberto) => {
@@ -124,7 +124,7 @@ export default function DashboardAdmin() {
         });
         doc.setFont("helvetica", "normal");
         doc.setFontSize(12);
-        doc.text("Ultimas chamadas feitas", doc.internal.pageSize.getWidth() / 2, 90, {
+        doc.text("Ultimas chamadas pendentes", doc.internal.pageSize.getWidth() / 2, 90, {
             align: "center",
         });
         autoTable(doc, {

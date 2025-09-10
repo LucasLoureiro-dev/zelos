@@ -19,6 +19,7 @@ export default function Chamados() {
   const [pool, setPool] = useState('');
   const [tecnico, setTecnico] = useState('');
   const [chamadas, setChamadas] = useState('');
+  const [clicou, setClicou] = useState(false);
 
 
   const [form, setForm] = useState({
@@ -187,6 +188,7 @@ export default function Chamados() {
 
 
   function criarChamado() {
+
     fetch(`http://localhost:8080/notificacoes`, {
       method: 'POST',
       body: JSON.stringify({
@@ -233,7 +235,7 @@ export default function Chamados() {
         return feito.json()
       })
       .then((res) => {
-        fetch(`http://localhost:8080/acompanhamentos`, {
+        return fetch(`http://localhost:8080/acompanhamentos`, {
           method: "POST",
           headers: {
             "Content-type": "application/json"
@@ -243,8 +245,7 @@ export default function Chamados() {
           })
         })
       })
-      .then(setPool(''))
-      .then(window.location.href = '/admin/chamados')
+      .then((res) => window.location.href = '/admin/chamados')
   }
   function handleConcluir() {
     fetch(`http://localhost:8080/notificacoes`, {
@@ -309,7 +310,7 @@ export default function Chamados() {
               const apontamento = data.acompanhamentos.find((ola) => ola.chamado_id == apontamento_id);
               const currentdate = new Date();
               const datetime = currentdate.toISOString().slice(0, 19).replace('T', ' ');
-              fetch(`http://localhost:8080/acompanhamentos/${apontamento.id}`, {
+              return fetch(`http://localhost:8080/acompanhamentos/${apontamento.id}`, {
                 method: "PUT",
                 headers: {
                   "Content-type": "application/json"
@@ -322,7 +323,7 @@ export default function Chamados() {
                 })
               })
             })
-            .then(window.location.href = '/admin/chamados')
+            // .then((res) => window.location.href = '/admin/chamados')
         )
     }
   }
@@ -490,14 +491,14 @@ export default function Chamados() {
                 {pools.map((pool) => (
                   <tr key={pool.id} style={{ cursor: "pointer" }}>
                     <td data-th="Patrimonio" className="p-2">{pool.patrimonio
-                    ?(
-                      <>
-                      {pool.patrimonio}
-                      </>
-                    )
-                    :(<>
-                    Não especificado
-                    </>)}</td>
+                      ? (
+                        <>
+                          {pool.patrimonio}
+                        </>
+                      )
+                      : (<>
+                        Não especificado
+                      </>)}</td>
                     <td data-th="Título" className="p-2">{pool.titulo}</td>
                     <td data-th="Estado" className="p-2">
                       <span

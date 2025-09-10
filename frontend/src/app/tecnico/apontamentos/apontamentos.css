@@ -3,242 +3,446 @@
   --cor-senai-vermelho: #E30613;
   --cor-preta: #1a1a1a;
   --cor-cinza-escuro: #333333;
-  --cor-cinza-medio: #6c757d;
-  --cor-cinza-claro: #f8f9fa;
+  --cor-cinza-medio: #4d4d4d;
+  --cor-cinza-claro: #f4f4f4;
   --cor-branca: #ffffff;
-  --cor-status-pendente: #5053f7de;
-  --cor-status-ativo: #34b953cb;
-  --cor-status-bloqueado: #fff943c5;
+  --cor-status-andamento: #ffc107;
+  --cor-status-concluido: #28a745;
+  --cor-status-aberto: #4d4dff;
+
+  /* adicionais para dark */
+  --bg-claro: #f8fafc;
+  --bg-escuro: #1f1f1f;
+  --bg-card-escuro: #2E3134;
+  --texto-claro: #333;
+  --texto-escuro: #f1f1f1;
+  --borda-escura: #444;
+}
+
+/*  CONTAINER PRINCIPAL  */
+.main {
+  flex: 1;
 }
 
 .acompanhamentos-tudo {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8fafc;
-  color: #333;
+  background-color: var(--bg-claro);
+  color: var(--texto-claro);
+  padding-bottom: 2rem;
+  transition: all 0.3s ease;
   min-height: 100vh;
-}
-
-h4,
-.h4 {
-  margin: 0; /* tira espaçamento extra do h4 */
-}
-
-/* ===== Botões ===== */
-.btn-primario {
-  background-color: var(--cor-senai-vermelho);
-  color: #ffffff;
-  padding: 0.65rem 1.2rem;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  flex-direction: row;
 }
 
-.btn-primario:hover {
-  background-color: #a00000;
-  transform: translateY(-2px);
-}
-
-.btn-secundario {
-  background-color: var(--cor-senai-vermelho);
-  color: #fff;
-  padding: 0.65rem 1.2rem;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* botão do relatório */
-.btn-secundario:hover {
-  background-color: #000;
-  transform: translateY(-1px);
-}
-
-/* ===== Tabela Container ===== */
+/*  TABELA  */
 .tabela-chamadas {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   background: var(--cor-branca);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.tabela-chamadas th,
+.tabela-chamadas td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .tabela-chamadas thead {
-  background-color: var(--cor-cinza-claro);
+  background-color: var(--cor-cinza-claro) ;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
 
-.tabela-chamadas th,
-.tabela-chamadas td {
-  padding: 1rem 1.2rem;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-  vertical-align: middle;
+/*  DARK MODE: TABELA  */
+.dark .acompanhamentos-tudo,
+.dark-mode .acompanhamentos-tudo {
+  background-color: var(--bg-escuro);
+  color: var(--texto-escuro);
 }
 
-.tabela-chamadas tbody tr:last-child td {
-  border-bottom: none;
+.dark .tabela-chamadas,
+.dark-mode .tabela-chamadas {
+  background: var(--bg-card-escuro);
+  color: var(--texto-escuro);
+  border: 1px solid var(--borda-escura);
 }
 
-.tabela-chamadas tbody tr:hover {
-  background-color: #fdfdfd;
+.dark .tabela-chamadas th,
+.dark-mode .tabela-chamadas thead {
+  background: var(--cor-cinza-escuro);
+  color: var(--texto-escuro);
 }
 
-/* ===== Status Badges ===== */
-.badge {
-  padding: 0.45rem 0.9rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: inline-block;
+.dark .tabela-chamadas td,
+.dark-mode .tabela-chamadas td {
+  border-bottom: 1px solid var(--borda-escura);
 }
 
-/* botoes de status mudado*/
-.status-pendente {
-  background-color: var(--cor-status-pendente);
-  color: #e7e7e7;
-  border-radius: 7px;
+.dark .tabela-chamadas tbody tr:hover,
+.dark-mode .tabela-chamadas tbody tr:hover {
+  background-color: #2a2a2a;
 }
 
-.status-ativo {
-  background-color: var(--cor-status-ativo);
-  color: #fff;
-  border-radius: 7px;
-}
-
-.status-bloqueado {
-  background-color: var(--cor-status-bloqueado);
-  color: #2b2b2b96;
-  border-radius: 7px;
-}
-
-/* fim do botão de status */
-
-/* ===== Ícones de ação ===== */
-.acao-icon {
-  font-size: 1.2rem;
-  margin-right: 0.6rem;
-  color: var(--cor-cinza-medio);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.acao-icon:hover {
-  color: var(--cor-senai-vermelho);
-  transform: scale(1.15);
-}
-
-/* ===== Responsividade ===== */
-@media (max-width: 800px) {
-  .tabela-chamadas thead {
-    display: none;
-  }
-
-  .tabela-chamadas td {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #eee;
-    padding: 0.8rem;
-  }
-
-  .tabela-chamadas td::before {
-    content: attr(data-th) ": ";
-    font-weight: 600;
-    color: var(--cor-cinza-escuro);
-  }
-}
-/* Overlay para o fundo escuro */
+/*  MODAL OVERLAY  */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(25, 25, 25, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1050;
+  animation: fadeBg 0.3s ease;
 }
 
-/* Conteúdo do modal */
+/*  MODAL CONTENT  */
 .modal-content {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
+  background: var(--bg-claro);
+  color: var(--cor-preta);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 100%;
   max-width: 600px;
-  width: 90%;
-  animation: fadeIn 0.3s ease-in-out;
-  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: zoomIn 0.3s ease;
 }
 
-/* Animação de entrada */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.modal-body{
+  width: 100%;
 }
 
-/* Botão de fechar */
-.modal-close {
+/* Dark mode: modal */
+.dark .modal-content,
+.dark-mode .modal-content {
+  background: var(--bg-card-escuro);
+  color: var(--texto-escuro);
+  border: 1px solid var(--borda-escura);
+}
+
+/*  MODAL HEADER  */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--cor-cinza-medio);
+  padding-bottom: 0.5rem;
+}
+
+.modal-header h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* ///////////Botão de fechar (X) */
+.close-btn {
   background: transparent;
   border: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   cursor: pointer;
-  color: #333;
+  color: var(--cor-preta);
+  transition: 0.2s;
 }
 
-.modal-close:hover {
-  color: #d9534f;
+.close-btn:hover {
+  color: var(--cor-preta);
 }
 
-/* Ajuste para telas menores */
-@media (max-width: 800px) {
-  .tabela-chamadas {
-    border: 0;
-    width: 40%;
+.dark .close-btn {
+  color: var(--cor-branca);
+}
+
+/*  MODAL BODY  */
+.modal-body .info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.info-card,
+.info-item {
+  background: var(--cor-branca);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  color: var(--texto-claro);
+  border: 1px solid #e5e7eb;
+  /* borda sutil no claro */
+}
+
+/*  DARK MODE (escopo no root)  */
+html.dark .info-card,
+body.dark .info-card,
+html.dark-mode .info-card,
+body.dark-mode .info-card,
+html.dark .info-item,
+body.dark .info-item,
+html.dark-mode .info-item,
+body.dark-mode .info-item {
+  background: var(--bg-card-escuro);
+  border: 1px solid var(--borda-escura);
+  color: var(--texto-escuro);
+}
+
+/* (Opcional/defensivo) – garante claro quando o root NÃO é dark, 
+   mesmo que exista algum .dark aninhado em outra parte da página. */
+html:not(.dark):not(.dark-mode) .info-card,
+html:not(.dark):not(.dark-mode) .info-item {
+  background: var(--cor-branca);
+  border-color: #e5e7eb;
+  color: var(--texto-claro);
+}
+
+/*  COMENTÁRIOS  */
+.comments-section {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Card comentário */
+.comment-card {
+  background: var(--cor-cinza-claro);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  max-width: 75%;
+  font-size: 0.9rem;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.comment-card.tecnico {
+  background: #2563eb33;
+  align-self: flex-start;
+}
+
+.comment-card.usuario {
+  background: #16a34a33;
+  align-self: flex-end;
+}
+
+.comment-author {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.comment-text {
+  font-size: 0.9rem;
+  color: var(--cor-cinza-escuro);
+}
+
+/* Dark mode: comentários */
+.dark .comment-card,
+.dark-mode .comment-card {
+  background: var(--bg-card-escuro);
+  color: var(--texto-escuro);
+}
+
+.dark .comment-text,
+.dark-mode .comment-text {
+  color: var(--texto-escuro);
+}
+
+/* /////////// INPUT DE COMENTÁRIO  */
+.comment-input {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--cor-branca);
+  /* fundo branco no modo claro */
+  border: 1px solid var(--cor-cinza-medio);
+  border-radius: 12px;
+  padding: 0.5rem 0.8rem;
+  color: var(--texto-claro);
+  /* texto claro (preto) */
+}
+
+/* texto dentro do input */
+.comment-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  color: var(--texto-claro);
+  /* garante texto legível no claro */
+}
+
+/* Botão enviar */
+.btn-send {
+  background: var(--cor-senai-vermelho);
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-send:hover {
+  background: #a00000;
+}
+
+/* //////////////Dark mode: input */
+html.dark .comment-input,
+body.dark .comment-input,
+html.dark-mode .comment-input,
+body.dark-mode .comment-input {
+  background: var(--bg-card-escuro);
+  border: 1px solid var(--borda-escura);
+  color: var(--texto-escuro);
+}
+
+html.dark .comment-input input,
+body.dark .comment-input input,
+html.dark-mode .comment-input input,
+body.dark-mode .comment-input input {
+  color: var(--texto-escuro);
+}
+
+
+/*  FOOTER MODAL  */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--borda-escura);
+}
+
+/*  ÍCONES DE AÇÃO  */
+.acao-icon {
+  font-size: 1.3rem;
+  margin-right: 0.6rem;
+  color: var(--cor-cinza-medio);
+  cursor: pointer;
+}
+
+.dark .acao-icon,
+.dark-mode .acao-icon {
+  color: var(--texto-escuro);
+}
+
+/*  BADGES DE STATUS  */
+.badge {
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.status-pendente {
+  background-color: #3b82f6;
+  color: #fff;
+  border-radius: 7.5px;
+}
+
+.status-ativo {
+  background-color: #22c55e;
+  color: #fff;
+  border-radius: 7.5px;
+}
+
+.status-bloqueado {
+  background-color: var(--cor-status-andamento);
+  color: #ffffff;
+  border-radius: 7.5px;
+}
+
+.status-andamento {
+  background-color: #0ea5e9;
+  color: #fff;
+  border-radius: 7.5px;
+}
+
+/* Dark mode: badges */
+.dark .status-pendente,
+.dark-mode .status-pendente {
+  background-color: #2563eb;
+  color: #fff;
+  border-radius: 7.5px;
+}
+
+.dark .status-ativo,
+.dark-mode .status-ativo {
+  background-color: #16a34a;
+  color: #fff;
+  border-radius: 7.5px;
+}
+
+.dark .status-bloqueado,
+.dark-mode .status-bloqueado {
+  background-color: var(--cor-status-andamento);
+  color: #fff;
+  border-radius: 7.5px;
+}
+
+.dark .status-andamento,
+.dark-mode .status-andamento {
+  background-color: #0284c7;
+  color: #fff;
+  border-radius: 7.5px;
+}
+
+/*  BOTÕES GERAIS  */
+.btn-primario,
+.btn-secundario {
+  background-color: var(--cor-senai-vermelho);
+  color: #ffffff;
+  padding: 0.65rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primario:hover,
+.btn-secundario:hover {
+  background-color: #a00000;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/*  RESPONSIVIDADE  */
+@media (max-width: 640px) {
+  .modal-body .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 990px) {
+  thead {
+    display: none !important;
   }
 
-  .tabela-chamadas tr {
-    display: block;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    background: var(--cor-branca);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    padding: 0.5rem;
+  td {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 3ch auto;
   }
 
-  .tabela-chamadas td {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.6rem 0.8rem;
-    border: none;
-  }
-
-  .tabela-chamadas td::before {
-    content: attr(data-th);
+  td::before {
+    content: attr(data-th) ": ";
     font-weight: 600;
-    color: var(--cor-cinza-escuro);
-    margin-right: 10px;
   }
 }
-

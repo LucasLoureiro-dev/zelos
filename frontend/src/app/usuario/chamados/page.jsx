@@ -165,7 +165,6 @@ export default function Chamados() {
     <div className="container-fluid d-flex p-0 m-0 w-100 chamados">
       <SideBar />
       <div className="d-flex flex-column me-0 w-100 main">
-
         <div className="fundo-paginas d-flex  flex-column w-100 p-4 p-md-4 p-2">
           <div className="d-flex flex-row d-md-column flex-wrap justify-content-between align-items-center mb-4">
             <h4>Acompanhamento de Chamados</h4>
@@ -318,6 +317,7 @@ export default function Chamados() {
                     onClick={() => setModalView(false)}
                     className="btn btn-fechar"
                   ><i className="bi bi-x-lg"></i></button>
+            
                 </div>
                 <div className="modal-body">
                   {poolModal ? (
@@ -397,14 +397,14 @@ export default function Chamados() {
                           <td
                             data-th="Título"
                             className="p-3 text-truncate"
-                            style={{ maxWidth: "180px" }}
+                            
                           >
                             {item.patrimonio}
                           </td>
                           <td
                             data-th="Título"
                             className="p-3 text-truncate"
-                            style={{ maxWidth: "180px" }}
+                            
                           >
                             {item.titulo}
                           </td>
@@ -412,7 +412,7 @@ export default function Chamados() {
                           <td
                             data-th="Descrição"
                             className="p-3 text-truncate"
-                            style={{ maxWidth: "200px" }}
+                            
                           >
                             {item.descricao}
                           </td>
@@ -463,7 +463,7 @@ export default function Chamados() {
             </table>
 
             {pools.length === 0 && (
-              <p className="text-center mt-3 texto-muted">
+              <p className="changing text-center mt-3 texto-muted">
                 Nenhum chamado encontrado.
               </p>
             )}

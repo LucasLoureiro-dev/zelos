@@ -143,7 +143,7 @@ export default function dashboardUsuario() {
             method: 'POST',
             body: JSON.stringify({
                 rm: usuario.rm,
-                texto: `O técnico ${uuario.rm} se atribiu ao chamado do patrimônio ${chamado.patrimonio}`,
+                texto: `O técnico ${usuario.rm} se atribiu ao chamado do patrimônio ${chamado.patrimonio}`,
                 area: chamado.tipo,
                 cargo: 'tecnico',
                 id_pool: chamado.id
@@ -185,7 +185,7 @@ export default function dashboardUsuario() {
                 return feito.json()
             })
             .then((res) => {
-                fetch(`http://localhost:8080/acompanhamentos`, {
+                return fetch(`http://localhost:8080/acompanhamentos`, {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"
@@ -195,7 +195,7 @@ export default function dashboardUsuario() {
                     })
                 })
             })
-            .then(window.location.href = '/tecnico/dashboard')
+            .then((res) => {window.location.href = '/tecnico/dashboard'})
 
 
     }

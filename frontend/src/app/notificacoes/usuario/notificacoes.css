@@ -70,16 +70,20 @@ h3 {
   color: var(--cor-branca);
 }
 
-.tabela-tecnico th,
-.tabela-tecnico {
+.tabela-usuarios th,
+.tabela-usuarios {
   background-color: var(--bg-claro);
   text-align: left;
-  border-bottom: 1px solid var(--cor-cinza-claro);
+  border-bottom: 1px solid var(--cor-cinza-medio);
   background: #fff;
   /* font-weight: 600; */
   color: var(--cor-preta);
 }
-.tabela-tecnico-visto {
+
+.tabela-usuarios td{
+  border-bottom: #808080 1px solid;
+}
+.tabela-usuarios-visto {
   background-color: var(--bg-claro);
   text-align: left;
   border-bottom: 1px solid var(--cor-cinza-claro);
@@ -101,8 +105,37 @@ h3 {
   color: var(--cor-branca);
 }
 
-/* modal */
+.btn-vermais {
+  background-color: var(--cor-senai-vermelho);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  /* evita quebra do texto */
+}
 
+.btn-vermais:hover {
+color: var(--cor-branca);
+background-color: var(--cor-vermelha-senai);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-vermais:active{
+color: var(--cor-branca);
+background-color: var(--cor-senai-vermelho);
+}
+.btn-vermais:focus-visible{
+color: var(--cor-branca);
+background-color: var(--cor-senai-vermelho);
+}
+
+/* modal */
 .ver-mais{
   color: #1a1a1a;
   }

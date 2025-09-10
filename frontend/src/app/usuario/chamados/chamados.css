@@ -306,18 +306,20 @@ a.btn-vermelho {
   background: var(--cor-senai-vermelho) !important;
 }
 
-/* MODAL */
 .modal-forms-chamada {
   background-color: var(--cor-branca);
   position: relative;
   z-index: 15;
   box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
   width: 60%;
-  height: 40vh;
   max-width: 600px;
+  max-height: 90vh;        /* altura máxima para caber na tela */
+  overflow-y: auto;        /* ativa rolagem quando necessário */
   border-radius: 12px;
   animation: fadeInScale .3s ease;
+  padding: 1.5rem;
 }
+
 
 .modal-overlay {
   position: fixed;
@@ -446,6 +448,10 @@ button.btn.btn-success:hover {
   max-width: 100%;         /* ocupa só a largura do modal */
 }
 
+
+.dark .changing{
+  color: var(--cor-branca);
+}
 
 /* RESPONSIVIDADE */
 @media (max-width: 800px) {

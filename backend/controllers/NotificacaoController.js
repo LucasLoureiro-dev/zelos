@@ -6,7 +6,7 @@ const listarNotificacoesController = async (req, res) => {
         res.status(200).json(notificacao);
     }
     catch (error) {
-        console.error('Erro ao listar notificações:', error);
+        console.error('Erro listando notificações:', error);
         res.status(500).json({ mensagem: 'Erro ao listar notificações' });
     }
 }
@@ -19,8 +19,8 @@ const listarNotificacoesPorAreaController = async (req, res) => {
         res.status(200).json({ notificacao });
     }
     catch (error) {
-        console.error('Erro ao listar notificações:', error);
-        res.status(500).json({ mensagem: 'Erro ao listar notificações' });
+        console.error('Erro listando notificações por area:', error);
+        res.status(500).json({ mensagem: 'Erro ao listar notificações por area' });
     }
 }
 

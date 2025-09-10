@@ -102,7 +102,7 @@ export default function dashboardUsuario() {
         <SideBar nome={usuario.nome} cargo={usuario.cargo} />
         <div className="d-flex flex-row me-0 w-100 main-content">
 
-          <div className="fundo-paginas d-flex flex-column flex-md-row w-100 justify-content-center p-md-4 p-2">
+          <div className=" d-flex flex-column flex-md-row w-100 justify-content-center p-md-4 p-2">
             <div className="d-flex flex-column row-gap-3 w-100 w-md-75">
               <div className="d-flex justify-content-between">
                 <h4>Dashboard do Usuário</h4>

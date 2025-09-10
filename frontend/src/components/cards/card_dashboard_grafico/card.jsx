@@ -33,7 +33,7 @@ export default function Card_dashboard_grafico({ numero_pendente = 0, numero_emA
     const chartOptions = isDarkMode ? darkOptions : lightOptions;
 
     return (
-        <div className="estatisticas card shadow border border-0" style={{ width: "100%", backgroundColor: isDarkMode ? '#343a40' : '#FFF' }}>
+        <div className="estatisticas card shadow border border-0" style={{ width: "100%", backgroundColor: isDarkMode ? '#2E3134' : '#FFF' }}>
             <div className="card-body">
                 <h5 className="card-title" style={{ color: isDarkMode ? '#FFF' : '#000' }}>Veja as estatisticas de suas chamadas</h5>
                 <p className="card-subtitle mb-2" style={{ color: isDarkMode ? '#adb5bd' : '#6c757d' }}>Veja quantas chamadas estão em andamento, concluidas ou pendentes</p>

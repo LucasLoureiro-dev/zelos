@@ -155,8 +155,8 @@ export default function Notificacoes(nome, cargo) {
                             return (
                               <tr key={index} className="p-5">
                                 <td data-th="titulo" className={handleVisto(item.id)}>{item.texto}</td>
-                                <td data-th="ação" className="conteudo p-2 border-bottom">
-                                  <button onClick={() => handleVer({ index: item.id, id_pool: item.id_pool, id_servico: item.area })} type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+                                <td data-th="ação" className="conteudo p-2 ">
+                                  <button onClick={() => handleVer({ index: item.id, id_pool: item.id_pool, id_servico: item.area })} type="button" className="btn btn-vermais" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
                                     Ver mais
                                   </button>
                                 </td>

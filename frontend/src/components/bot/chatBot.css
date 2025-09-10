@@ -46,10 +46,26 @@
 .input-enviar-chat input:focus{
     box-shadow: none;
     border: none;
+    color: var(--cor-preta);
+    background-color: var(--cor-bg-card-escuro);
 }
 .input-enviar-chat input:focus-visible{
     box-shadow: none;
     border: none;
+    background-color: var(--cor-bg-card-escuro);
+    color: var(--cor-preta);
+}
+.dark .input-enviar-chat input:focus{
+    box-shadow: none;
+    border: none;
+    color: var(--cor-branca);
+    background-color: var(--cor-bg-card-escuro);
+}
+.dark .input-enviar-chat input:focus-visible{
+    box-shadow: none;
+    border: none;
+    background-color: var(--cor-bg-card-escuro);
+    color: var(--cor-branca);
 }
 
 @media (max-width: 800px) {

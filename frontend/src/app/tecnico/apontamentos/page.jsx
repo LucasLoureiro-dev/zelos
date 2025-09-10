@@ -441,13 +441,13 @@ export default function Chamadas() {
           <div className="d-flex flex-column border-2 p-4 w-100 w-md-75">
             {/* Cabeçalho */}
             <div className="d-flex flex-column flex-md-row flex-wrap justify-content-between w-100 mb-4">
-              <h4>Apontamentos</h4>
+              <h4>Apontamentos dos Chamados</h4>
             </div>
 
 
             {/* Tabela */}
             <div className="shadow-sm rounded-circle bg-white table-card" ref={tableRef}>
-              <table className="tabela-chamadas w-50">
+              <table className="tabela-chamadas">
                 <thead>
                   <tr>
                     <th>Chamado</th>
