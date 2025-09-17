@@ -1,4 +1,5 @@
 import { criarUsuario, buscarAdm, buscarTecnico, listarTecnico } from "../models/Dashboard.js";
+import {compare} from '../config/database.js';
 
 const criarUsuarioController = async (req, res) => {
     try {
@@ -17,8 +18,8 @@ const buscarAdmController = async (req, res) => {
         const usuario = req.body;
         const result = await buscarAdm(usuario.username);
         if (result.length > 0) {
-            if (result[0].senha != usuario.password) {
-
+            const senhaCorreta = await compare(usuario.password, result[0].senha)
+            if (!senhaCorreta) {
                 return res.status(401).json({ message: "Senha incorreta" });
             }
             else {
@@ -51,7 +52,8 @@ const buscarTecnicoController = async (req, res) => {
         const { username, password } = req.body;
         const result = await buscarTecnico(username);
         if (result.length > 0) {
-            if (result[0].senha != password) {
+            const senhaCorreta = await compare( password, result[0].senha)
+            if (!senhaCorreta) {
                 return res.status(401).json({ message: "Senha incorreta" });
             }
             else {

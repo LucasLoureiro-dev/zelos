@@ -23,7 +23,7 @@ export default function Notificacoes(nome, cargo) {
           return response.json();
 
         } else {
-         window.location.href = '/'
+          window.location.href = '/'
         }
       })
       .then((data) => {
@@ -56,7 +56,7 @@ export default function Notificacoes(nome, cargo) {
     }
   }, [usuario]);
 
-   useEffect(() => {
+  useEffect(() => {
     if (usuario) {
       fetch(`http://localhost:8080/notificacoes/vista/${usuario.rm}`)
         .then((response) => {
@@ -121,10 +121,10 @@ export default function Notificacoes(nome, cargo) {
     }
 
     if (achou) {
-      return "tabela-tecnico"
+      return "tabela-usuario"
     }
     else {
-      return "tabela-tecnico-visto"
+      return "tabela-usuarios-visto"
     }
   }
 
@@ -185,7 +185,9 @@ export default function Notificacoes(nome, cargo) {
               <>
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="staticBackdropLabel">{pool.titulo}</h1>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => {
+                    window.location.href = '/notificacoes/usuario';
+                  }}></button>
                 </div>
                 <div className="ver-mais modal-body">
                   {pool ? (

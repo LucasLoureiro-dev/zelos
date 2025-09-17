@@ -3,7 +3,14 @@ import { criarPool, lerTodasPools, poolPorId, lerPoolPorTipo, atualizarPool, ler
 const criarPoolController = async (req, res) => {
   try {
     const { patrimonio, titulo, descricao, tipoServico, servico } = req.body;
+    let set_patrimonio;
 
+    if(!patrimonio){
+      set_patrimonio = ''
+    }
+    else{
+      set_patrimonio = patrimonio
+    }
 
     const currentdate = new Date();
     const datetime = currentdate.toISOString().slice(0, 19).replace('T', ' ');
@@ -18,7 +25,7 @@ const criarPoolController = async (req, res) => {
     }
 
     const data = {
-      patrimonio: patrimonio,
+      patrimonio: set_patrimonio,
       titulo: titulo,
       descricao: descricao,
       tipo: tipoServico,

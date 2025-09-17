@@ -81,7 +81,7 @@ export default function Notificacoes() {
         .then((data) => {
           setPool(data.pool[0])
         })
-        console.log(pool)
+      console.log(pool)
 
       fetch(`http://localhost:8080/servicos`)
         .then(async (res) => {
@@ -185,7 +185,10 @@ export default function Notificacoes() {
           <div className="tudo-modal modal-content">
             <div className="modal-header d-flex flex-row justify-content-between">
               <h1 className="modal-title fs-5" id="staticBackdropLabel">{pool ? pool.titulo : "Carregando..."}</h1>
-              <button type="button" className="btn-fechar" data-bs-dismiss="modal" onClick={() => setPool(null)}>
+              <button type="button" className="btn-fechar" data-bs-dismiss="modal" onClick={() => {
+                setPool(null);
+                window.location.href = '/notificacoes/adm';
+              }} >
                 <i className="bi bi-x-lg"></i>
               </button>
             </div>

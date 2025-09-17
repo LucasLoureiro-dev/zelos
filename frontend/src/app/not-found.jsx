@@ -18,7 +18,7 @@ export default function NotFound() {
             <button
               className="home-button text-decoration-none"
             >
-              VOLTAR PARA HOME
+              VOLTAR PARA HOMEeex
               <svg className="arrow-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M5 12h14m-7-7l7 7-7 7"

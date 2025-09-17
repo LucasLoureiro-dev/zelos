@@ -30,6 +30,7 @@ h3 {
 .chamados {
   background-color: var(--bg-claro);
   min-height: 100vh;
+  width: 100%;
 }
 
 .main {
@@ -46,10 +47,22 @@ h3 {
 }
 
 .tabela-container {
+  width: 75vw;
   border-radius: 9.5px;
   background-color: #fff;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
   overflow: hidden;
+}
+
+.chamados .tabela-chamados td[data-th="Título"] {
+  max-width: 200px;
+}
+.dashboard-usuario .table-card td[data-th="Descrição"] {
+  max-width: 250px;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.4;
+  padding-right: 20px;
 }
 
 .dark .tabela-container {
@@ -57,20 +70,21 @@ h3 {
 }
 
 .tabela-chamados {
+  width: 100%;
   background-color: #fff;
   border-radius: 9.5px;
   overflow-x: auto;
-  text-align: left;
+  text-align: right;
+}
+
+.tabela-chamados table{
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .dark .tabela-chamados {
   background-color: var(--bg-card-escuro);
 }
-
-.tabela-chamados table {
-  width: 100%;
-}
-
 
 .tabela-chamados td {
   background-color: var(--cor-branca);
@@ -107,10 +121,6 @@ h3 {
 .dark .texto-muted {
   color: var(--texto-claro);
 }
-
-/* .dark .texto-muted {
-  color: var(--cor-branca);
-} */
 
 .transicao-container {
   overflow: hidden;
@@ -454,7 +464,16 @@ button.btn.btn-success:hover {
 }
 
 /* RESPONSIVIDADE */
-@media (max-width: 800px) {
+@media (max-width: 980px) {
+
+  .dashboard-usuario .table-card td[data-th="Descrição"] {
+    max-width: 300px;
+    white-space: normal;
+    word-break: keep-all;
+    line-height: 1.4;
+    padding-right: 10px;
+  }
+  
   thead {
     display: none !important;
   }

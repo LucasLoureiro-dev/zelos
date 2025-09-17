@@ -51,6 +51,7 @@ const notificacaoVistaController = async (req, res) => {
 
 const criarNotificacaoController = async (req, res) => {
     try {
+        console.log(req.body)
         const { rm, texto, area, cargo, id_pool } = req.body;
         const data = {
             rm: rm,

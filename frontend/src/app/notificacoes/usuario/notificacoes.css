@@ -88,7 +88,7 @@ h3 {
   text-align: left;
   border-bottom: 1px solid var(--cor-cinza-claro);
   background: #fff;
-  font-weight: 600;
+  font-weight: 750;
   color: var(--cor-preta);
 }
 .dark .tabela-usuarios td,th {

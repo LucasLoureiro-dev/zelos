@@ -60,7 +60,7 @@ const atualizarAcompanhamentoController = async (req, res) => {
         const data = {
             chamado_id: chamado_id,
             comeco: new Date(comeco),
-            fim: fim,
+            fim: new Date(fim),
             comentario: comentario_ola
         }
 

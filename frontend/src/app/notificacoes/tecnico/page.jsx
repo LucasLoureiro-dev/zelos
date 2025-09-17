@@ -208,7 +208,10 @@ export default function Notificacoes() {
           <div className="tudo-modal modal-content p-0">
             <div className="modal-header d-flex flex-row justify-content-between">
               <h1 className="modal-title fs-5" id="staticBackdropLabel">{pool ? pool.titulo : "Carregando..."}</h1>
-              <button type="button" className="btn-fechar" data-bs-dismiss="modal" aria-label="Close" onClick={() => setPool(null)}>
+              <button type="button" className="btn-fechar" data-bs-dismiss="modal" aria-label="Close" onClick={() => {
+                setPool(null);
+                window.location.href = '/notificacoes/tecnico';
+              }}>
                 <i className="bi bi-x-lg"></i>
               </button>
             </div>

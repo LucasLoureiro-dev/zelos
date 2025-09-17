@@ -29,7 +29,7 @@ export default function Chamadas() {
   const [inicio, setInicio] = useState('');
   const [autor, setAutor] = useState('');
   const [apontamento, setApontamento] = useState('');
-
+  const sla = ""
   // use ffect de dashboard e pools adicinionado
 
   useEffect(() => {
@@ -138,8 +138,8 @@ export default function Chamadas() {
       body: JSON.stringify({
         chamado_id: apontamento.chamado_id,
         comentario: comentario,
-        comeco: apontamento.comeco,
-        fim: apontamento.fim
+        comeco: new Date(apontamento.comeco),
+        fim: apontamento.fim != null ?(new Date(apontamento.fim)):('')
       }),
     })
       .then(window.location.href = '/tecnico/apontamentos')
@@ -252,13 +252,13 @@ export default function Chamadas() {
       if (estado != 'concluida') {
         const agora = new Date();
 
-        const diffMs = agora - inicio;
+        const diffMs = agora - (inicio - 10800000);
 
         const ms_em_hora = 1000 * 60 * 60;
         const ms_em_dia = ms_em_hora * 24;
 
         const dias = Math.floor(diffMs / ms_em_dia);
-        const horas = Math.floor((diffMs % ms_em_dia) / ms_em_hora) + 3;
+        const horas = Math.floor((diffMs % ms_em_dia) / ms_em_hora);
 
         return (
           <>

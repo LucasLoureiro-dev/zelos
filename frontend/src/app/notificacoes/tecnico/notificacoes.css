@@ -117,7 +117,7 @@ h3 {
   text-align: left;
   border-bottom: 1px solid var(--cor-cinza-claro);
   background: #fff;
-  font-weight: 600;
+  font-weight: 750;
   color: var(--cor-preta);
 }
 
@@ -156,6 +156,31 @@ h3 {
   animation: fadeBg 0.3s ease;
 }
 
+
+/* modal dark */
+.dark .modal-header {
+  background-color: var(--bg-card-escuro);
+  color: var(--texto-escuro);
+  border-bottom: 1px solid var(--borda-escura);
+}
+
+.dark .ver-mais.modal-body {
+  background-color: var(--bg-card-escuro);
+  color: var(--texto-escuro);
+  border: 1px solid var(--borda-escura);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.dark .ver-mais.modal-body p {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .ver-mais.modal-body {
+  scrollbar-color: var(--cor-senai-vermelho) var(--bg-escuro);
+}
+
+/* fim do modal dark */
+
 .fade-in {
   opacity: 0;
   max-height: 0;
@@ -179,6 +204,8 @@ h3 {
 .dark .btn-fechar {
   color: var(--cor-branca);
 }
+
+
 
 .botao-vermelhao {
   background-color: var(--cor-senai-vermelho) !important;

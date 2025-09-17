@@ -10,7 +10,7 @@ const listarPatrimoniosController = async (req, res) => {
             res.status(200).json({ result });
         }
         else {
-            res.status(404).json({ message: "Não foi encocontrado nenhum patrimônio com este nome" });
+            res.status(404).json({ message: "Não foi encontrado nenhum patrimônio com este nome" });
         }
 
     }

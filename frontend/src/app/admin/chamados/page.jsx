@@ -68,29 +68,33 @@ export default function Chamados() {
 
 
 
-    const check = await fetch(`http://localhost:8080/patrimonio/${form.patrimonio}`);
+    if (form.patrimonio) {
+      const check = await fetch(`http://localhost:8080/pool/patrimonio/${form.patrimonio}`);
 
-    if (check.status == 200) {
-      return alert('Patrimônio já cadastrado');
-    }
-    else {
+      if (check.status == 200) {
+        return alert('Patrimônio já cadastrado');
+      }
+      else {
 
-      let tipoId = servicos.find(servico => servico.nome === form.tipoServico)?.id;
-      if (!tipoId) {
-        tipoId = 0
+        let tipoId = servicos.find(servico => servico.nome === form.tipoServico)?.id;
+        if (!tipoId) {
+          tipoId = 0
+        }
+
+        const response = await fetch('http://localhost:8080/pool', {
+          method: 'POST',
+          body: JSON.stringify(form),
+          headers: {
+            "content-type": "application/json"
+          },
+          credentials: 'include'
+        })
+
+        const result = await response.json();
+        window.location.href = '/admin/chamados'
       }
 
-      const response = await fetch('http://localhost:8080/pool', {
-        method: 'POST',
-        body: JSON.stringify(form),
-        headers: {
-          "content-type": "application/json"
-        },
-        credentials: 'include'
-      })
 
-      const result = await response.json();
-      window.location.href = '/admin/chamados'
 
 
       fetch(`http://localhost:8080/notificacoes`, {
@@ -247,12 +251,19 @@ export default function Chamados() {
       })
       .then((res) => window.location.href = '/admin/chamados')
   }
-  function handleConcluir() {
+  function handleConcluir(pool) {
+    let patrimonio;
+    if (!pool.patrimonio) {
+      patrimonio = ' não especificado '
+    }
+    else {
+      patrimonio = pool.patrimonio
+    }
     fetch(`http://localhost:8080/notificacoes`, {
       method: 'POST',
       body: JSON.stringify({
         rm: usuario.rm,
-        texto: `O chamado do patrimônio ${pool.patrimonio} foi concluído`,
+        texto: `O chamado do patrimônio ${patrimonio} foi concluído`,
         area: pool.tipo,
         cargo: 'tecnico',
         id_pool: pool.id
@@ -285,6 +296,7 @@ export default function Chamados() {
           return res.json()
         })
         .then((data) => {
+          console.log(pool.id)
           return data.find((chamado) => chamado.chamado == pool.id);
         })
         .then((data) => {
@@ -309,21 +321,22 @@ export default function Chamados() {
             .then((data) => {
               const apontamento = data.acompanhamentos.find((ola) => ola.chamado_id == apontamento_id);
               const currentdate = new Date();
-              const datetime = currentdate.toISOString().slice(0, 19).replace('T', ' ');
+              const datetime1 = currentdate.toISOString().slice(0, 19).replace('T', ' ');
+              const atualizar_apontamento = {
+                chamado_id: apontamento.chamado_id,
+                comentario: apontamento.comentario,
+                comeco: apontamento.comeco,
+                fim: datetime1
+              }
               return fetch(`http://localhost:8080/acompanhamentos/${apontamento.id}`, {
                 method: "PUT",
                 headers: {
                   "Content-type": "application/json"
                 },
-                body: JSON.stringify({
-                  "chamado_id": apontamento.chamado_id,
-                  "comentario": apontamento.comentario,
-                  "comeco": apontamento.comeco,
-                  "fim": datetime
-                })
+                body: JSON.stringify(atualizar_apontamento)
               })
             })
-            // .then((res) => window.location.href = '/admin/chamados')
+            .then(() => window.location.href = '/admin/chamados')
         )
     }
   }
@@ -364,14 +377,13 @@ export default function Chamados() {
                   <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div className="row">
                       <div className="col-md-6">
-                        <label className="form-label">Nº do patrimônio</label>
+                        <label className="form-label">Nº do patrimônio (Deixe em branco caso não saiba)</label>
                         <input
                           list="patrimonios"
                           type="text"
                           className="form-control"
                           name="patrimonio"
                           onChange={handleChange}
-                          required
                         />
                         <datalist id="patrimonios">
                           {equipamentos
@@ -668,7 +680,7 @@ export default function Chamados() {
                   <button
                     type="button"
                     className="btn btn-atribuir"
-                    onClick={() => handleConcluir()}
+                    onClick={() => handleConcluir(pool)}
                   >
                     Concluir
                   </button>

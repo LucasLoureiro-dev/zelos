@@ -21,7 +21,7 @@ export default function Chamados() {
   const [form, setForm] = useState({
     patrimonio: '',
     titulo: '',
-    tipoServico: '',
+    tipoServico: 1,
     descricao: '',
     outroTipoServico: '',
   });
@@ -65,8 +65,6 @@ export default function Chamados() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(form.patrimonio)
-
     const formData = new FormData();
 
     formData.append('patrimonio', form.patrimonio);
@@ -81,47 +79,53 @@ export default function Chamados() {
       formData.append('outro', false);
     }
 
+    if (form.patrimonio) {
+      const check = await fetch(`http://localhost:8080/pool/patrimonio/${form.patrimonio}`);
 
-
-    const check = await fetch(`http://localhost:8080/pool/patrimonio/${form.patrimonio}`);
-
-    if (check.status == 200) {
-      return alert('Patrimônio já cadastrado');
-    }
-    else {
-
-      let tipoId = servicos.find(servico => servico.nome === form.tipoServico)?.id;
-      if (!tipoId) {
-        tipoId = 0
+      if (check.status == 200) {
+        return alert('Patrimônio já cadastrado');
       }
+      else {
 
-      const response = await fetch('http://localhost:8080/pool', {
-        method: 'POST',
-        body: JSON.stringify(form),
-        headers: {
-          "content-type": "application/json"
-        },
-        credentials: 'include'
-      })
-
-      const result = await response.json();
-      window.location.href = '/usuario/chamados'
-
-
-      fetch(`http://localhost:8080/notificacoes`, {
-        method: 'POST',
-        body: JSON.stringify({
-          rm: usuario.rm,
-          texto: `Foi criado um chamado do patrimônio: ${form.patrimonio}`,
-          area: form.tipoServico,
-          cargo: usuario.cargo,
-          id_pool: result.id
-        }),
-        headers: {
-          'Content-Type': 'application/json'
+        let tipoId = servicos.find(servico => servico.nome === form.tipoServico)?.id;
+        if (!tipoId) {
+          tipoId = 0
         }
-      })
+      }
     }
+
+    const response = await fetch('http://localhost:8080/pool', {
+      method: 'POST',
+      body: JSON.stringify(form),
+      headers: {
+        "content-type": "application/json"
+      },
+      credentials: 'include'
+    })
+
+    const result = await response.json();
+    window.location.href = '/usuario/chamados'
+    let set_patrimonio;
+    if(form.patrimonio){
+      set_patrimonio = form.patrimonio
+    }
+    else{
+      set_patrimonio = ' Não especificado'
+    }
+    fetch(`http://localhost:8080/notificacoes`, {
+      method: 'POST',
+      body: JSON.stringify({
+        rm: usuario.rm,
+        texto: `Foi criado um chamado do patrimônio: ${set_patrimonio}`,
+        area: form.tipoServico,
+        cargo: usuario.cargo,
+        id_pool: result.id
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
   };
 
   useEffect(() => {
@@ -162,10 +166,10 @@ export default function Chamados() {
   const ano = data.getFullYear();
 
   return (
-    <div className="container-fluid d-flex p-0 m-0 w-100 chamados">
+    <div className="container-fluid d-flex p-0 m-0 chamados">
       <SideBar />
-      <div className="d-flex flex-column me-0 w-100 main">
-        <div className="fundo-paginas d-flex  flex-column w-100 p-4 p-md-4 p-2">
+      <div className="d-flex flex-column me-0 main">
+        <div className="d-flex  flex-column p-md-4 p-2">
           <div className="d-flex flex-row d-md-column flex-wrap justify-content-between align-items-center mb-4">
             <h4>Acompanhamento de Chamados</h4>
             <div className="d-flex gap-2">
@@ -196,14 +200,13 @@ export default function Chamados() {
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="row">
                     <div className="col-md-6">
-                      <label className="form-label">Nº do patrimônio</label>
+                      <label className="form-label">Nº do patrimônio (Opcional)</label>
                       <input
                         list="patrimonios"
                         type="text"
                         className="form-control bg-transparent"
                         name="patrimonio"
                         onChange={handleChange}
-                        required
                       />
                       <datalist id="patrimonios">
                         {equipamentos
@@ -219,7 +222,7 @@ export default function Chamados() {
                             </>
                           ) : (
                             <>
-
+                              Carregando...
                             </>
                           )}
                       </datalist>
@@ -244,7 +247,7 @@ export default function Chamados() {
                             </>
                           )
                           : (
-                            <><option>:(</option></>
+                            <><option disabled>Carregando...</option></>
                           )}
                       </select>
                     </div>
@@ -317,7 +320,7 @@ export default function Chamados() {
                     onClick={() => setModalView(false)}
                     className="btn btn-fechar"
                   ><i className="bi bi-x-lg"></i></button>
-            
+
                 </div>
                 <div className="modal-body">
                   {poolModal ? (
@@ -329,7 +332,7 @@ export default function Chamados() {
                       <p><b>Tipo de serviço:</b> {tipo ? tipo.nome : "Não informado"}</p>
 
                       {/* Novo campo: Descrição */}
-                      <p><b>Descrição:</b> {poolModal.descricao ? poolModal.descricao : "Sem descrição."}</p>
+                      <p className="d-flex"><b>Descrição: </b> {poolModal.descricao ? poolModal.descricao : "Sem descrição."}</p>
 
                       <b>Estado:</b> {poolModal.estado === "pendente" && (
                         <b data-th="Estado" className="p-3">
@@ -370,16 +373,15 @@ export default function Chamados() {
           }
 
           {/* Tabela de Chamados */}
-          <div className="tabela-container w-100 m-0 p-3">
-            <table className="tabela-chamados  w-100">
+          <div className="tabela-container m-0 p-3">
+            <table className="tabela-chamados">
               <thead>
                 <tr>
                   <th className="p-3">Patrimônio</th>
                   <th className="p-3">Título</th>
-                  <th className="p-3">Descrição</th>
+                  <th className="p-3 w-100">Descrição</th>
                   <th className="p-3">Status</th>
                   <th className="p-3">Criado em</th>
-                  {usuario?.cargo === "admin" && <th>Técnico</th>}
                   <th className="p-3">Ação</th>
                 </tr>
               </thead>
@@ -397,22 +399,28 @@ export default function Chamados() {
                           <td
                             data-th="Título"
                             className="p-3 text-truncate"
-                            
+
                           >
-                            {item.patrimonio}
+                            {item.patrimonio?(
+                              <>
+                              {item.patrimonio}
+                              </>
+                            ):(
+                              <>Não especificado</>
+                            )}
                           </td>
                           <td
                             data-th="Título"
                             className="p-3 text-truncate"
-                            
+
                           >
                             {item.titulo}
                           </td>
 
                           <td
                             data-th="Descrição"
-                            className="p-3 text-truncate"
-                            
+                            className=" p-3 text-truncate"
+                            style={{ maxWidth: "100px" }}
                           >
                             {item.descricao}
                           </td>
